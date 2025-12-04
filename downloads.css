@@ -1,0 +1,327 @@
+/* Downloads Page Specific Styles */
+
+#downloads-hero {
+    padding: 6rem 2rem 4rem 2rem;
+    text-align: center;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 58, 237, 0.05) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 60%);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* Projects Grid */
+#projects-grid {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Large Project Card */
+.project-card-large {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    transition: all 0.3s ease;
+}
+
+.project-card-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.project-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--light-gray);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.project-img-large {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-title-large {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+.project-category {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-description p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-features h4, 
+.project-tech h4 {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.project-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-features li {
+    padding: 0.5rem 0;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.tech-tag {
+    background: var(--light-gray);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Project Actions */
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-btn-large {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Project Stats */
+.project-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--card-border);
+    margin-top: 1rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+/* Coming Soon Section */
+.coming-soon-section {
+    margin-top: 4rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.coming-soon-card {
+    background: var(--light-gray);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.coming-soon-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.coming-soon-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.coming-soon-card h3 {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.coming-soon-card p {
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.eta {
+    background: var(--accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Download Info Section */
+#download-info {
+    background: var(--subtle-bg);
+    padding: 4rem 2rem;
+    margin: 4rem 0;
+}
+
+.info-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.info-card p {
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .project-card-large {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+    }
+    
+    .project-stats {
+        justify-content: space-around;
+        gap: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .project-title-large {
+        font-size: 1.8rem;
+    }
+    
+    .coming-soon-grid {
+        grid-template-columns: 1fr;
+    }
+}
