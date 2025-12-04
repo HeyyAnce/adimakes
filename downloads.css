@@ -1,5 +1,3 @@
-/* Downloads Page Specific Styles */
-
 #downloads-hero {
     padding: 6rem 2rem 4rem 2rem;
     text-align: center;
@@ -132,11 +130,12 @@
     font-weight: 500;
 }
 
-/* Project Actions */
+/* Project Actions - FIXED CENTERING */
 .project-actions {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    justify-content: center; /* Center the buttons */
 }
 
 .project-btn-large {
@@ -146,6 +145,8 @@
     padding: 1rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
+    min-width: 160px; /* Minimum width for consistency */
+    justify-content: center; /* Center content within buttons */
 }
 
 .btn-icon {
@@ -306,6 +307,7 @@
     
     .project-actions {
         flex-direction: column;
+        align-items: center; /* Center buttons in mobile */
     }
     
     .project-stats {
@@ -323,5 +325,31 @@
     
     .coming-soon-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .project-btn-large {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.2rem;
+        min-width: 140px;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .project-card-large {
+        padding: 1.5rem;
+    }
+    
+    #downloads-hero {
+        padding: 4rem 1rem 3rem 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
     }
 }
