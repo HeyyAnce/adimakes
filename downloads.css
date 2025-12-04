@@ -261,11 +261,11 @@
 .info-container {
     max-width: 1000px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     gap: 2rem;
-    justify-items: center; /* This centers the grid items */
-    align-items: start;
+    flex-wrap: wrap;
 }
 
 .info-card {
@@ -275,8 +275,9 @@
     padding: 2rem;
     text-align: center;
     transition: all 0.3s ease;
-    width: 100%;
-    max-width: 320px; /* Consistent width */
+    flex: 1;
+    min-width: 280px;
+    max-width: 320px;
 }
 
 .info-card:hover {
@@ -288,7 +289,6 @@
     font-size: 2.5rem;
     margin-bottom: 1rem;
     display: block;
-    text-align: center;
 }
 
 .info-card h3 {
@@ -296,13 +296,11 @@
     color: var(--text);
     margin-bottom: 0.75rem;
     font-weight: 600;
-    text-align: center;
 }
 
 .info-card p {
     color: var(--muted);
     line-height: 1.5;
-    text-align: center;
 }
 
 /* Mobile Responsiveness */
