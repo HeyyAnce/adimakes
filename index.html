@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdiMakes — Home</title>
+    <meta name="author" content="Adi">
+    <meta name="description" content="AdiMakes — small Python apps, tools and experiments by Adi.">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+
+<body>
+    <nav id="desktop-nav">
+        <div class="logo"><b>AdiMakes</b></div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo"><b>AdiMakes</b></div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="profile">
+        <div class="section__pic-container">
+            <img src="./assets/profile-pic.png" alt="Adi profile" />
+        </div>
+
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Adi</h1>
+            <p class="section__text__p2">I build small, useful tools and experiments.</p>
+            <p class="section__text__p3">I'm a <span id="typed-output" class="typed-text"></span></p>
+
+            <div class="btn-container">
+                <button class="btn btn-color-2" onclick="location.href='downloads.html'">
+                    Downloads
+                </button>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">
+                    Contact Info
+                </button>
+            </div>
+
+            <div id="socials-container" aria-hidden="false">
+                <img src="./assets/linkedin.png" alt="LinkedIn" class="icon" onclick="location.href='https://www.linkedin.com/in/aditya-raj-dixit-596808343/'" />
+                <img src="./assets/github.png" alt="Github" class="icon" onclick="location.href='https://github.com/HeyyAnce'" />
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic" />
+            </div>
+
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="Experience Icon" class="icon" />
+                        <h3>Skills</h3>
+                        <p>3 Years of python coding experience</p>
+                    </div>
+                </div>
+
+                <div class="text-container">
+                    <p>
+                        I'm a developer interested in building practical Python tools and small web apps. I like music and programming and I love fiddling and experimenting with code.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    <section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Technical Skills</h2>
+                    <div class="article-container">
+                        <article>
+                            <img src="./assets/checkmark.png" alt="icon" class="icon" />
+                            <div>
+                                <h3>HTML</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <img src="./assets/checkmark.png" alt="icon" class="icon" />
+                            <div>
+                                <h3>Python</h3>
+                                <p>Intermediate</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+    <section id="projects">
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container project-card">
+                    <div class="project-content">
+                        <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
+                        <h2 class="experience-sub-title project-title">Spotify Playlist Tool</h2>
+                        <div class="btn-container project-buttons">
+                            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">Github</button>
+                            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
+                <p><a href="mailto:adi.rajdixit@gmail.com">adi.rajdixit@gmail.com</a></p>
+            </div>
+
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
+                <p><a href="https://www.linkedin.com/in/aditya-raj-dixit-596808343/" aria-label="LinkedIn profile">LinkedIn</a></p>
+            </div>
+
+            <div class="contact-info-container">
+                <img src="./assets/instagram.png" alt="Instagram icon" class="icon contact-icon" />
+                <p><a href="https://www.instagram.com/rukjaadi/" aria-label="Instagram profile">Instagram</a></p>
+             </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>© 2025 AdiMakes.in — All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    var typed = new Typed('#typed-output', {
+        strings: ['<i>Python Developer.</i>', '<i>Musician.</i>', '<i>Tool Builder.</i>'],
+        typeSpeed: 60,
+        backSpeed: 40,
+        loop: true,
+        // Add these options to prevent layout shift:
+        showCursor: false,  // Hide blinking cursor
+        fadeOut: true,      // Smooth transitions
+    });
+    
+    // Set fixed width based on longest string
+    document.getElementById('typed-output').style.minWidth = '160px';
+</script>
+
+</body>
+</html>

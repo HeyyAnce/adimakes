@@ -1,0 +1,153 @@
+@media screen and (max-width: 1400px) {
+    #profile {
+        height: auto;
+        margin-bottom: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    .about-containers {
+        flex-wrap: wrap;
+    }
+
+    #contact, #projects {
+        height: fit-content;
+    }
+
+    section {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #desktop-nav {
+        display: none;
+    }
+
+    #hamburger-nav {
+        display: flex;
+    }
+
+    #experience, .experience-details-container {
+        margin-top: 1.5rem;
+    }
+
+    #profile, .section-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    section, .section-container {
+        height: fit-content;
+    }
+
+    section {
+        margin: 0;
+        padding: 1.5rem 5%;
+    }
+
+    .section__pic-container {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .about-containers {
+        margin-top: 1rem;
+    }
+
+    .section__text {
+        text-align: center;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #contact, footer {
+        height: auto;
+    }
+
+    #profile {
+        margin-bottom: 0;
+        padding: 1.5rem 1rem;
+    }
+
+    article {
+        font-size: 1rem;
+        min-width: 120px;
+    }
+
+    footer nav {
+        height: fit-content;
+        margin-bottom: 1rem;
+    }
+
+    .about-containers, .contact-info-upper-container, .btn-container {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .contact-info-container {
+        margin: 0;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .contact-info-container p, .nav-links li a {
+        font-size: 1rem;
+    }
+
+    .experience-sub-title {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .section__pic-container {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 1rem;
+    }
+
+    .section__text__p2 {
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .text-container {
+        text-align: center;
+    }
+
+    section {
+        padding: 1rem 3%;
+    }
+
+    .project-img {
+        width: 180px;
+        height: 120px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .article-container {
+        gap: 1.5rem;
+    }
+}
