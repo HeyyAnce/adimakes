@@ -1,27 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Downloads — AdiMakes</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="author" content="Adi">
+    <meta name="description" content="Download Python tools and applications built by Adi - free, open-source, and ready to use.">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="downloads.css" />
 </head>
+
 <body>
+    <nav id="desktop-nav">
+        <div class="logo"><b>AdiMakes</b></div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<header>Downloads</header>
+    <nav id="hamburger-nav">
+        <div class="logo"><b>AdiMakes</b></div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+                <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="index.html#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="index.html#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-</nav>
+    <section id="downloads-hero">
+        <div class="hero-content">
+            <p class="section__text__p1">Free & Open Source</p>
+            <h1 class="title">Downloads</h1>
+            <p class="hero-description">
+                Discover a collection of Python tools and applications I've crafted to solve everyday problems. 
+                Each project is built with care, thoroughly tested, and completely free to download and use.
+            </p>
+        </div>
+    </section>
 
-<main>
-    <h2>Download My Tools</h2>
-    <p>Add download links like this:</p>
-    <p><a href="https://github.com/YOURUSERNAME/YOURREPO/releases/download/v1.0/spotify_tool.exe">Download Spotify Tool</a></p>
-</main>
+    <section id="projects-grid">
+        <div class="projects-container">
+            <div class="project-card-large">
+                <div class="project-image-container">
+                    <img src="./assets/project-1.png" alt="Spotify Playlist Tool" class="project-img-large" />
+                </div>
+                
+                <div class="project-info">
+                    <h2 class="project-title-large">Spotify Playlist Tool</h2>
+                    <p class="project-category">Music & Entertainment</p>
+                    
+                    <div class="project-description">
+                        <p>A powerful Python application that helps you manage your Spotify playlists with ease. Features include playlist analysis, duplicate detection, and automated organization tools.</p>
+                        
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>🎵 Analyze playlist statistics and insights</li>
+                                <li>🔍 Find and remove duplicate tracks</li>
+                                <li>📊 Generate detailed listening reports</li>
+                                <li>🎯 Smart playlist recommendations</li>
+                                <li>⚡ Fast batch operations</li>
+                            </ul>
+                        </div>
 
-<footer>© 2025 AdiMakes.in</footer>
+                        <div class="project-tech">
+                            <h4>Built With:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python 3.9+</span>
+                                <span class="tech-tag">Spotify API</span>
+                                <span class="tech-tag">Tkinter GUI</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="project-actions">
+                        <button class="btn btn-color-2 project-btn-large" onclick="location.href='https://github.com/HeyyAnce'">
+                            <img src="./assets/github.png" alt="GitHub" class="btn-icon" />
+                            View on GitHub
+                        </button>
+                        <button class="btn btn-color-1 project-btn-large" onclick="location.href='https://github.com/HeyyAnce/releases'">
+                            <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                            </svg>
+                            Download Latest
+                        </button>
+                    </div>
+
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-number">v1.2.0</span>
+                            <span class="stat-label">Latest Version</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">2.1MB</span>
+                            <span class="stat-label">Download Size</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Windows/Mac</span>
+                            <span class="stat-label">Platforms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Projects -->
+            <div class="coming-soon-section">
+                <h2 class="section-title">More Tools Coming Soon</h2>
+                <p class="section-description">I'm constantly working on new projects and improvements. Here's what's in development:</p>
+                
+                <div class="coming-soon-grid">
+                    <div class="coming-soon-card">
+                        <div class="coming-soon-icon">🔧</div>
+                        <h3>File Organizer Pro</h3>
+                        <p>Automatically organize your downloads and documents with smart categorization.</p>
+                        <span class="eta">ETA: March 2025</span>
+                    </div>
+                    
+                    <div class="coming-soon-card">
+                        <div class="coming-soon-icon">📊</div>
+                        <h3>Data Visualizer</h3>
+                        <p>Turn your CSV files into beautiful, interactive charts and graphs.</p>
+                        <span class="eta">ETA: April 2025</span>
+                    </div>
+                    
+                    <div class="coming-soon-card">
+                        <div class="coming-soon-icon">🎨</div>
+                        <h3>Image Batch Editor</h3>
+                        <p>Bulk resize, rename, and optimize images with a simple interface.</p>
+                        <span class="eta">ETA: May 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download-info">
+        <div class="info-container">
+            <div class="info-card">
+                <div class="info-icon">🔒</div>
+                <h3>Safe & Secure</h3>
+                <p>All downloads are scanned for malware and digitally signed for your protection.</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">🆓</div>
+                <h3>Completely Free</h3>
+                <p>No hidden costs, no subscriptions, no premium features. Everything is free forever.</p>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-icon">🔄</div>
+                <h3>Regular Updates</h3>
+                <p>Projects are actively maintained with bug fixes and new features added regularly.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>© 2025 AdiMakes.in — All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
