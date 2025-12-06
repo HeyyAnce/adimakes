@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloads — AdiMakes</title>
+    <meta name="author" content="Adi">
+    <meta name="description" content="Download Python tools and applications built by Adi - free, open-source, and ready to use.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../downloads.css" />
+</head>
+
+<body>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="/">Adi<span class="highlight">Makes</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/#contact" class="nav-btn">Contact</a></li>
+        </ul>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo">
+            <a href="/">Adi<span class="highlight">Makes</span></a>
+        </div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="/" onclick="toggleMenu()">Home</a></li>
+                <li><a href="/#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="/#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="/#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="downloads-hero">
+        <div class="hero-content">
+            <p class="subtitle">Free & Open Source</p>
+            <h1 class="title">Down<span class="highlight">loads</span></h1>
+            <p class="hero-description">
+                Discover a collection of Python tools and applications I've made.
+                Each project is built with care, thoroughly tested, and completely free to download and use.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects-grid">
+        <div class="projects-container">
+            
+            <div class="project-card-large glass-card">
+                <div class="project-image-container">
+                    <img src="../assets/project-1.png" alt="Spotify Playlist Tool" class="project-img-large" />
+                </div>
+                
+                <div class="project-info">
+                    <div>
+                        <p class="project-category">Music & Entertainment</p>
+                        <h2 class="project-title-large">Spotify Playlist Tool</h2>
+                    </div>
+                    
+                    <div class="project-description">
+                        <p>A powerful Python application that helps you manage your Spotify playlists. Features include copying playlists between accounts, backing up song lists, and converting your "Liked Songs" into shareable playlists.</p>
+                    </div>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Spotify API</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <button class="btn btn-primary project-btn-large" onclick="location.href='https://github.com/HeyyAnce/releases'">
+                            <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"/>
+                            </svg>
+                            Download
+                        </button>
+                        <button class="btn btn-outline project-btn-large" onclick="location.href='https://github.com/HeyyAnce'">
+                            <img src="../assets/github.png" alt="GitHub" class="btn-icon invert-icon" />
+                            View Source
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="download-info">
+        <div class="info-details-container glass-card">
+            <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Why Download Here?</h2>
+            <div class="info-article-container">
+                <article class="info-article">
+                    <div class="info-icon">🔒</div>
+                    <div>
+                        <h3>Safe & Secure</h3>
+                        <p>Scanned for malware</p>
+                    </div>
+                </article>
+
+                <article class="info-article">
+                    <div class="info-icon">🆓</div>
+                    <div>
+                        <h3>Completely Free</h3>
+                        <p>Open Source (MIT)</p>
+                    </div>
+                </article>
+
+                <article class="info-article">
+                    <div class="info-icon">⚡</div>
+                    <div>
+                        <h3>Fast & Light</h3>
+                        <p>Optimized Python</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 AdiMakes.in — Built with ☕ and Python.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
