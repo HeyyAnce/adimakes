@@ -17,7 +17,7 @@ document.addEventListener('click', function(e) {
 });
 
 var typed = new Typed('#typed-output', {
-    strings: ['Python Developer.', 'Tool Builder.', 'Creative Coder.'],
+    strings: ['Python Developer.', 'Tool Developer', 'Musician'],
     typeSpeed: 50,
     backSpeed: 30,
     backDelay: 2000,
