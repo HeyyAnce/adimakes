@@ -1,10 +1,10 @@
 /* --- VARIABLES --- */
 :root {
     /* Dark Theme Palette */
-    --bg-dark: #0a0f1c;        /* Very dark blue/black */
-    --bg-card: rgba(30, 41, 59, 0.4); /* Glassmorphism base */
-    --text-main: #f1f5f9;      /* Off-white */
-    --text-muted: #94a3b8;     /* Slate grey */
+    --bg-dark: #0a0f1c;
+    --bg-card: rgba(30, 41, 59, 0.4);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
     
     /* The Gradient Theme */
     --primary-blue: #3b82f6;
@@ -133,7 +133,7 @@ nav {
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
 }
 
-/* Hamburger Menu */
+/* --- HAMBURGER MENU --- */
 #hamburger-nav { display: none; }
 .hamburger-menu { position: relative; display: inline-block; }
 .hamburger-icon { display: flex; flex-direction: column; justify-content: space-between; height: 24px; width: 30px; cursor: pointer; }
@@ -233,7 +233,7 @@ section {
     border: 4px solid var(--bg-dark);
 }
 
-/* Buttons */
+/* --- BUTTONS --- */
 .btn-container { display: flex; gap: 1rem; margin-bottom: 2rem; }
 
 .btn {
@@ -340,12 +340,16 @@ section {
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .project-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     transition: transform 0.5s;
 }
 
