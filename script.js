@@ -121,12 +121,12 @@
 
     function buildSortVisual(el, statusEl) {
         const files = [
-            { ext: '.py',  type: 'amber' }, { ext: '.exe', type: 'slate' },
-            { ext: '.png', type: 'slate' }, { ext: '.zip', type: 'amber' },
-            { ext: '.txt', type: '' },      { ext: '.csv', type: 'slate' },
-            { ext: '.md',  type: '' },      { ext: '.mp3', type: 'amber' },
-            { ext: '.pdf', type: '' },      { ext: '.jpg', type: 'slate' },
-            { ext: '.log', type: '' },      { ext: '.ico', type: 'amber' }
+            { ext: '.py',  type: 'light' }, { ext: '.exe', type: 'muted' },
+            { ext: '.png', type: 'muted' }, { ext: '.zip', type: 'light' },
+            { ext: '.txt', type: '' },      { ext: '.csv', type: 'muted' },
+            { ext: '.md',  type: '' },      { ext: '.mp3', type: 'light' },
+            { ext: '.pdf', type: '' },      { ext: '.jpg', type: 'muted' },
+            { ext: '.log', type: '' },      { ext: '.ico', type: 'light' }
         ];
 
         const cols = 4;
