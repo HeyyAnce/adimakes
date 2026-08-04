@@ -217,14 +217,6 @@
     }
 
     /* =====================================================
-       MISC: footer year
-       ===================================================== */
-    function initFooterYear() {
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = `© ${new Date().getFullYear()}`;
-    }
-
-    /* =====================================================
        SMOOTH SCROLL (Without updating URL Hash)
        ===================================================== */
     function initCleanScroll() {
@@ -253,7 +245,6 @@
         initReveal();
         initSortVisual();
         initCopyEmail();
-        initFooterYear();
         initCleanScroll(); 
     });
 })();

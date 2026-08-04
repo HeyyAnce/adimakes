@@ -596,24 +596,6 @@ p { margin: 0; }
 }
 .social-row a:hover { color: var(--accent); }
 
-/* ---------- Footer ---------- */
-#site-footer {
-  border-top: 1px solid var(--border);
-  padding: 2.4rem 0;
-}
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.footer-logo { font-family: var(--font-display); font-weight: 700; color: var(--text-1); }
-.footer-note { font-size: .82rem; color: var(--text-3); }
-.footer-links { display: flex; gap: 1.4rem; font-size: .84rem; }
-.footer-links a { color: var(--text-3); transition: color .2s ease; }
-.footer-links a:hover { color: var(--accent); }
-
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -636,5 +618,4 @@ p { margin: 0; }
   .section { padding: 5rem 0; }
   .skills-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 1.6rem; }
-  .footer-inner { flex-direction: column; text-align: center; }
 }
