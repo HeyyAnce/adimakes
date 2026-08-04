@@ -1,274 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adimakes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adi — Aditya Raj Dixit — Field Notes</title>
     <meta name="author" content="Aditya Raj Dixit">
-    <meta name="description" content="Aditya (Adi) is a Computer Science student at IILM University building open-source tools and learning software engineering. Maker of Sorta.">
-    <meta name="theme-color" content="#0a0a0c">
+    <meta name="description" content="Field notes from Aditya Raj Dixit: a Computer Science student building practical Python tools and learning in public.">
+    <meta name="theme-color" content="#191919">
 
-    <meta property="og:title" content="Adi — Aditya Raj Dixit — CS Student & Builder">
-    <meta property="og:description" content="Computer Science student building open-source Python projects while learning software engineering.">
+    <meta property="og:title" content="Adi — Aditya Raj Dixit — Field Notes">
+    <meta property="og:description" content="A Computer Science student building practical Python tools and learning in public.">
     <meta property="og:image" content="https://adimakes.in/assets/converted/profile-pic.webp">
     <meta property="og:url" content="https://adimakes.in">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
-    <link rel="shortcut icon" href="/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 
     <link rel="preload" as="image" href="/assets/converted/profile-pic.webp" type="image/webp">
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to field notes</a>
 
-    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+        <aside class="index-rail" aria-label="Site index">
+            <a href="#top" class="wordmark" aria-label="Adi — home">adi<span>.</span></a>
 
-    <!-- NAV -->
-    <header id="site-nav">
-        <nav class="nav-inner" aria-label="Primary">
-            <a href="#top" class="nav-logo" aria-label="Adi — home">
-                adi<span class="dot">.</span>
-            </a>
+            <div class="rail-index">
+                <p class="rail-label">Index</p>
+                <nav aria-label="Primary navigation">
+                    <a href="#about" data-nav-link><span>01</span> A little context</a>
+                    <a href="#tools" data-nav-link><span>02</span> Working toolkit</a>
+                    <a href="#projects" data-nav-link><span>03</span> Case file</a>
+                    <a href="#journey" data-nav-link><span>04</span> The path so far</a>
+                    <a href="#contact" data-nav-link><span>05</span> A note to you</a>
+                </nav>
+            </div>
 
-            <ul class="nav-links">
-                <li><a href="#about" data-nav-link>About</a></li>
-                <li><a href="#skills" data-nav-link>Skills</a></li>
-                <li><a href="#projects" data-nav-link>Projects</a></li>
-                <li><a href="#journey" data-nav-link>Journey</a></li>
-            </ul>
+            <div class="rail-bottom">
+                <p class="rail-status"><span></span> Currently learning in public</p>
+                <p class="rail-note">If it is annoying to do by hand, I will probably try to automate it.</p>
+                <div class="rail-links">
+                    <a href="https://github.com/HeyyAnce" target="_blank" rel="noopener">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/itsgivingadi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                </div>
+            </div>
+        </aside>
 
-            <a href="#contact" class="btn btn-small nav-cta">Get in touch</a>
+        <header class="mobile-bar">
+            <a href="#top" class="wordmark" aria-label="Adi — home">adi<span>.</span></a>
+            <a href="#contact" class="mobile-contact">Say hello ↗</a>
+        </header>
 
-            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-                <span></span><span></span><span></span>
-            </button>
-        </nav>
+        <main id="main">
+            <section id="top" class="opening" aria-labelledby="opening-title">
+                <p class="entry-stamp">Field notes / 001<br><span>Aditya Raj Dixit</span></p>
 
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#about" data-nav-link>About</a>
-            <a href="#skills" data-nav-link>Skills</a>
-            <a href="#projects" data-nav-link>Projects</a>
-            <a href="#journey" data-nav-link>Journey</a>
-            <a href="#contact" data-nav-link class="mobile-cta">Get in touch</a>
-        </div>
-    </header>
+                <div class="opening-title-wrap reveal">
+                    <p class="opening-prelude">A computer science student making practical things.</p>
+                    <h1 id="opening-title">Build the thing.<br><em>Make it simpler.</em></h1>
+                </div>
 
-    <main id="main">
-
-        <!-- HERO -->
-        <section id="top" class="hero">
-            <div class="hero-bg" aria-hidden="true"></div>
-            <div class="container hero-grid">
-
-                <div class="hero-copy reveal">
-                    <p class="eyebrow">Computer Science student · IILM University</p>
-                    <h1 class="hero-title">
-                        Building practical<br>
-                        software while<br>
-                        learning in public.
-                    </h1>
-                    <p class="hero-sub">
-                        I'm Aditya, a Computer Science student with three years of Python experience. I focus on engineering practical utilities, documenting my journey, and actively seeking new learning opportunities.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn-primary">View projects</a>
-                        <a href="#contact" class="btn btn-ghost">Say hello <span aria-hidden="true">→</span></a>
+                <div class="opening-bottom reveal">
+                    <div class="opening-summary">
+                        <p class="small-label">The short version</p>
+                        <p>I am Aditya — a Computer Science student with three years of Python experience. I build useful little tools, document what I learn, and keep moving toward the next hard thing.</p>
+                        <a href="#projects" class="text-link">Read the Sorta case file <span aria-hidden="true">↓</span></a>
                     </div>
-                    <dl class="hero-stats">
-                        <div class="stat">
-                            <dt>3+ yrs</dt>
-                            <dd>learning Python</dd>
+
+                    <dl class="now-list" aria-label="Currently">
+                        <div>
+                            <dt>Now</dt>
+                            <dd>Harvard CS50P + C</dd>
                         </div>
-                        <div class="stat">
-                            <dt>1</dt>
-                            <dd>open-source tool shipped</dd>
+                        <div>
+                            <dt>Shipped</dt>
+                            <dd>Sorta v1.0.0</dd>
                         </div>
-                        <div class="stat">
-                            <dt>Harvard CS50P</dt>
-                            <dd>currently enrolled</dd>
+                        <div>
+                            <dt>Based in</dt>
+                            <dd>IILM University</dd>
                         </div>
                     </dl>
                 </div>
+            </section>
 
-                <div class="hero-visual reveal" aria-hidden="true">
-                    <div class="sort-visual" id="sortVisual">
-                        <!-- chips injected by JS -->
+            <section id="about" class="note-section about-note" aria-labelledby="about-title">
+                <p class="section-marker"><span>01</span> A little context</p>
+                <div class="about-layout reveal">
+                    <figure class="portrait-note">
+                        <img src="/assets/converted/profile-pic.webp" alt="Portrait of Aditya" width="440" height="440" loading="lazy">
+                        <figcaption>Late nights, acoustic guitar, mechanical keyboards, and better ways to do repetitive things.</figcaption>
+                    </figure>
+
+                    <div class="note-copy">
+                        <p class="small-label">How this started</p>
+                        <h2 id="about-title">I like software that gets out of the way.</h2>
+                        <p>My foundation started in high school through Informatics Practices at O.P. Jindal School. Learning the basics of Python quickly turned into an interest in making tools that solve a real, ordinary problem.</p>
+                        <p>Before IILM University, I took an intentional gap year. It gave me space to work out what I actually wanted to build and to develop the habit of learning without waiting to be told what comes next.</p>
+                        <blockquote>“If it is annoying to do by hand, I will probably try to automate it.”</blockquote>
                     </div>
-                    <p class="sort-caption">
-                        <span class="sort-dot"></span>
-                        <span id="sortStatus">sorting into Scripts/</span>
-                    </p>
+                </div>
+            </section>
+
+            <section id="tools" class="note-section toolkit-note" aria-labelledby="tools-title">
+                <p class="section-marker"><span>02</span> Working toolkit</p>
+                <div class="toolkit-layout reveal">
+                    <div>
+                        <p class="small-label">What I reach for</p>
+                        <h2 id="tools-title">A small toolkit, used with intent.</h2>
+                    </div>
+                    <ul class="tool-list">
+                        <li><span>Python</span><small>The language I know best; practical utilities, scripts, and steady CS50P work.</small></li>
+                        <li><span>Tkinter</span><small>For desktop utilities that feel direct and useful on Windows.</small></li>
+                        <li><span>Automation</span><small>The habit behind most things I want to make.</small></li>
+                        <li><span>C</span><small>Currently learning the fundamentals with more care.</small></li>
+                        <li><span>AI-assisted engineering</span><small>A collaborator for exploring, building, and learning faster.</small></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects" class="case-file" aria-labelledby="sorta-title">
+                <div class="case-file-top reveal">
+                    <p class="section-marker"><span>03</span> Case file</p>
+                    <p class="case-number">001 / shipped</p>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- ABOUT -->
-        <section id="about" class="section">
-            <div class="container about-grid">
-                <div class="about-media reveal">
-                    <img src="/assets/converted/profile-pic.webp" alt="Portrait of Aditya" width="440" height="440" loading="lazy">
-                </div>
-                <div class="about-copy reveal">
-                    <p class="eyebrow">About</p>
-                    <h2 class="section-title">Software should feel simple, even when it isn't.</h2>
-                    <p>
-                        My foundation in programming started back in high school at O.P. Jindal School. What began as learning Informatics Practices quickly turned into a genuine interest in building tools that actually solve problems. 
-                    </p>
-                    <p>
-                        Before heading to IILM University, I took an intentional gap year. That time gave me the space to reform my character, figure out what I actually want to build, and double down on self-directed learning. Now, I lean on a mix of foundational coding and AI-assisted engineering to bring ideas like desktop utilities and automation scripts to life. 
-                    </p>
-                    <blockquote class="pull-quote">
-                        "If it's annoying to do by hand, I'll probably try to automate it."
-                    </blockquote>
-                    <p class="muted-line">When I'm not writing code, you can usually find me playing my acoustic guitar late at night, or geeking out over mechanical keyboards and high-fidelity audio gear.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section section-alt">
-            <div class="container">
-                <div class="section-head reveal">
-                    <p class="eyebrow">What I work with</p>
-                    <h2 class="section-title">Tools I reach for.</h2>
+                <div class="case-title reveal">
+                    <p class="small-label">A desktop file organiser for Windows</p>
+                    <h2 id="sorta-title">Sorta</h2>
+                    <p>One small answer to a familiar question: why am I still moving these files by hand?</p>
                 </div>
 
-                <div class="skills-grid reveal">
-                    <article class="skill-card">
-                        <h3>Programming</h3>
-                        <ul>
-                            <li><span>Python</span><span class="tag-label">Primary / CS50P</span></li>
-                            <li><span>C Language</span><span class="tag-label">Learning</span></li>
-                        </ul>
-                    </article>
-
-                    <article class="skill-card">
-                        <h3>Web</h3>
-                        <ul>
-                            <li><span>HTML</span><span class="tag-label">Basics / Reading</span></li>
-                        </ul>
-                    </article>
-
-                    <article class="skill-card">
-                        <h3>Focus areas</h3>
-                        <ul>
-                            <li><span>AI-Assisted Development</span></li>
-                            <li><span>Tkinter / Desktop Utilities</span></li>
-                            <li><span>Automation</span></li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-head reveal">
-                    <p class="eyebrow">Shipped</p>
-                    <h2 class="section-title">Live in the wild.</h2>
-                </div>
-
-                <div class="project-feature reveal">
-                    <div class="project-media">
+                <div class="case-spread reveal">
+                    <figure class="sorta-screen">
                         <img src="/assets/converted/sorta-preview.webp" alt="Sorta app interface showing organized file categories" loading="lazy">
-                    </div>
-                    <div class="project-info">
-                        <h3>Sorta</h3>
-                        <p>
-                            A desktop file organizer that auto-sorts files into the right folders,
-                            with full undo/redo capabilities. Engineered with AI assistance and built in Python with tkinter for Windows.
-                        </p>
-                        <ul class="tags" aria-label="Technologies used">
-                            <li>Python</li>
-                            <li>tkinter</li>
-                            <li>AI-Assisted</li>
-                            <li>Windows</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://github.com/HeyyAnce/Sorta" target="_blank" rel="noopener" class="btn btn-primary btn-small">GitHub ↗</a>
-                            <a href="https://github.com/HeyyAnce/Sorta/releases/download/v1.0.0/Sorta.exe" target="_blank" rel="noopener" class="btn btn-ghost btn-small">Download .exe ↗</a>
+                        <figcaption>Sorta v1.0.0 — a simple interface for a boring job.</figcaption>
+                    </figure>
+
+                    <div class="case-notes">
+                        <div>
+                            <p class="small-label">The problem</p>
+                            <p>Downloads and working folders become messy fast. Sorting them is repetitive, easy to postpone, and somehow always waiting for later.</p>
+                        </div>
+                        <div>
+                            <p class="small-label">The build</p>
+                            <p>A Python and tkinter desktop utility that groups files into the right folders, with undo and redo when you want a decision back.</p>
+                        </div>
+                        <div>
+                            <p class="small-label">The result</p>
+                            <p>My first open-source release: a real Windows app someone can download and use.</p>
+                        </div>
+                        <div class="case-actions">
+                            <a href="https://github.com/HeyyAnce/Sorta" target="_blank" rel="noopener" class="text-link">View source ↗</a>
+                            <a href="https://github.com/HeyyAnce/Sorta/releases/download/v1.0.0/Sorta.exe" target="_blank" rel="noopener" class="text-link">Download for Windows ↗</a>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="project-next reveal">
-                    <p><span class="pulse-dot" aria-hidden="true"></span> Exploring new ideas — currently open to learning opportunities and internships.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- JOURNEY -->
-        <section id="journey" class="section section-alt">
-            <div class="container">
-                <div class="section-head reveal">
-                    <p class="eyebrow">How I got here</p>
-                    <h2 class="section-title">The path so far.</h2>
+            <section id="journey" class="note-section records-note" aria-labelledby="journey-title">
+                <p class="section-marker"><span>04</span> The path so far</p>
+                <div class="records-heading reveal">
+                    <p class="small-label">No neat finish line yet</p>
+                    <h2 id="journey-title">A few entries from the ongoing version.</h2>
                 </div>
 
-                <ol class="timeline reveal">
-                    <li class="timeline-item">
-                        <div class="timeline-date">Present</div>
-                        <h3>Computer Science at IILM University</h3>
-                        <p>Starting my degree, diving deeper into Python via Harvard's CS50P, and picking up C programming.</p>
+                <ol class="records reveal">
+                    <li>
+                        <p class="record-date">Now</p>
+                        <div><h3>Computer Science at IILM University</h3><p>Starting my degree, taking CS50P seriously, and picking up C one concept at a time.</p></div>
                     </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">8 Months Ago</div>
-                        <h3>Shipped Sorta v1.0.0</h3>
-                        <p>Released my first open-source Windows file organizer, demonstrating the ability to take a project from concept to a downloadable reality.</p>
+                    <li>
+                        <p class="record-date">8 months ago</p>
+                        <div><h3>Released Sorta v1.0.0</h3><p>Took a project from idea to a downloadable, open-source Windows utility.</p></div>
                     </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">Gap Year</div>
-                        <h3>Exploration & Growth</h3>
-                        <p>Took intentional time for character development, competitive exam prep, and self-directed technical exploration.</p>
+                    <li>
+                        <p class="record-date">Gap year</p>
+                        <div><h3>Exploration and growth</h3><p>Focused on character, competitive-exam preparation, and self-directed technical work.</p></div>
                     </li>
-                    <li class="timeline-item">
-                        <div class="timeline-date">2023 – 2025</div>
-                        <h3>O.P. Jindal School</h3>
-                        <p>Learned Python basics through Informatics Practices and graduated with a solid academic foundation.</p>
+                    <li>
+                        <p class="record-date">2023 — 2025</p>
+                        <div><h3>O.P. Jindal School</h3><p>Learned Python through Informatics Practices and left with a solid starting point.</p></div>
                     </li>
                 </ol>
-            </div>
-        </section>
+            </section>
 
-        <!-- CONTACT -->
-        <section id="contact" class="section contact-section">
-            <div class="container contact-inner reveal">
-                <p class="eyebrow">Get in touch</p>
-                <h2 class="section-title">Let's build something useful.</h2>
-                <p class="contact-sub">
-                    Always looking for learning opportunities, internships, or just talking Python.
-                    Email is the fastest way to reach me.
-                </p>
-
-                <div class="contact-actions">
-                    <a href="mailto:adi.rajdixit@gmail.com" class="btn btn-primary btn-large" id="emailBtn">
-                        adi.rajdixit@gmail.com
-                    </a>
-                    <button class="btn btn-ghost btn-small copy-btn" id="copyEmailBtn" type="button" data-email="adi.rajdixit@gmail.com">
-                        <span id="copyLabel">Copy email</span>
-                    </button>
+            <section id="contact" class="closing-note" aria-labelledby="contact-title">
+                <p class="section-marker"><span>05</span> A note to you</p>
+                <div class="closing-layout reveal">
+                    <h2 id="contact-title">I am looking for the next useful thing to learn.</h2>
+                    <div>
+                        <p>Whether it is an internship, a learning opportunity, or simply a conversation about Python, I would be glad to hear from you.</p>
+                        <a href="mailto:adi.rajdixit@gmail.com" class="email-link">adi.rajdixit@gmail.com <span aria-hidden="true">↗</span></a>
+                        <button class="copy-link" id="copyEmailBtn" type="button" data-email="adi.rajdixit@gmail.com">Copy email address</button>
+                        <div class="closing-links">
+                            <a href="https://github.com/HeyyAnce" target="_blank" rel="noopener">GitHub ↗</a>
+                            <a href="https://www.linkedin.com/in/itsgivingadi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                            <a href="https://www.instagram.com/itsgivingadi/" target="_blank" rel="noopener">Instagram ↗</a>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="social-row">
-                    <a href="https://github.com/HeyyAnce" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://www.linkedin.com/in/itsgivingadi/" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://www.instagram.com/itsgivingadi/" target="_blank" rel="noopener">Instagram</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
+            </section>
+        </main>
+    </div>
 
     <script src="/script.js" defer></script>
 </body>
