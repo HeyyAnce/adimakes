@@ -1,250 +1,202 @@
 /**
- * Adi — site behaviour
- * Small, dependency-free modules: nav, mobile menu, scroll reveal,
- * the hero "sort" visual, and the copy-email button.
+ * script.js - Adimakes Portfolio Interactivity
  */
-(() => {
-    'use strict';
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* =====================================================
-       NAV: background on scroll + active section tracking
-       ===================================================== */
-    function initNav() {
-        const nav = document.getElementById('site-nav');
-        const navLinks = document.querySelectorAll('[data-nav-link]');
-        const sections = [...navLinks]
-            .map(link => document.querySelector(link.getAttribute('href')))
-            .filter(Boolean);
-
-        if (!nav) return;
-
-        const onScroll = () => {
-            nav.classList.toggle('scrolled', window.scrollY > 8);
-        };
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        if (!sections.length) return;
-
-        const setActive = (id) => {
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-            });
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) setActive(entry.target.id);
-            });
-        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-
-        sections.forEach(section => observer.observe(section));
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 0. Boot Animation Sequence
+    const bootScreen = document.getElementById('boot-screen');
+    
+    if (bootScreen) {
+        // Trigger simple fade out after a short delay
+        setTimeout(() => {
+            bootScreen.classList.add('revealed');
+            document.body.classList.remove('no-scroll');
+            
+            // Cleanup after fade transition
+            setTimeout(() => {
+                bootScreen.style.display = 'none';
+            }, 1500);
+        }, 500);
     }
-
-    /* =====================================================
-       MOBILE MENU
-       ===================================================== */
-    function initMobileMenu() {
-        const toggle = document.getElementById('navToggle');
-        const menu = document.getElementById('mobileMenu');
-        if (!toggle || !menu) return;
-
-        const close = () => {
-            toggle.setAttribute('aria-expanded', 'false');
-            menu.classList.remove('open');
-        };
-        const open = () => {
-            toggle.setAttribute('aria-expanded', 'true');
-            menu.classList.add('open');
-        };
-
-        toggle.addEventListener('click', () => {
-            const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-            isOpen ? close() : open();
+    
+    // 1. Custom Cursor Logic
+    const cursor = document.getElementById('glow-cursor');
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    
+    if (!isMobile && cursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') close();
-        });
-    }
-
-    /* =====================================================
-       SCROLL REVEAL
-       ===================================================== */
-    function initReveal() {
-        const items = document.querySelectorAll('.reveal');
-        if (!items.length) return;
-
-        if (prefersReducedMotion) {
-            items.forEach(el => el.classList.add('is-visible'));
-            return;
-        }
-
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    obs.unobserve(entry.target);
-                }
+        // Add hover states to interactive elements
+        const interactives = document.querySelectorAll('a, button, .bento-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hovering');
             });
-        }, { threshold: 0.15 });
-
-        items.forEach(el => observer.observe(el));
-    }
-
-    /* =====================================================
-       HERO SIGNATURE VISUAL — file-sort animation
-       12 "file" chips scatter, then settle into a sorted
-       3x4 grid: a literal nod to what Sorta (the shipped
-       project) actually does.
-       ===================================================== */
-    function initSortVisual() {
-        const el = document.getElementById('sortVisual');
-        const statusEl = document.getElementById('sortStatus');
-        if (!el) return;
-
-        // Wait for fonts + full layout to settle before measuring the box —
-        // measuring too early (e.g. before web fonts load) can capture a
-        // stale size and misplace the grid.
-        const ready = document.fonts && document.fonts.ready
-            ? document.fonts.ready
-            : Promise.resolve();
-
-        ready.then(() => {
-            requestAnimationFrame(() => requestAnimationFrame(() => buildSortVisual(el, statusEl)));
-        });
-    }
-
-    function buildSortVisual(el, statusEl) {
-        const files = [
-            { ext: '.py',  type: 'light' }, { ext: '.exe', type: 'muted' },
-            { ext: '.png', type: 'muted' }, { ext: '.zip', type: 'light' },
-            { ext: '.txt', type: '' },      { ext: '.csv', type: 'muted' },
-            { ext: '.md',  type: '' },      { ext: '.mp3', type: 'light' },
-            { ext: '.pdf', type: '' },      { ext: '.jpg', type: 'muted' },
-            { ext: '.log', type: '' },      { ext: '.ico', type: 'light' }
-        ];
-
-        const cols = 4;
-        const rows = 3;
-        const cellW = 100 / cols;
-        const cellH = 100 / rows;
-
-        const box = el.getBoundingClientRect();
-        // size chips as a fraction of the container so the grid always fits,
-        // on a 320px mobile box just as cleanly as a 380px desktop one
-        const chipPx = Math.min(box.width / cols, box.height / rows) * 0.72;
-
-        files.forEach((file, i) => {
-            const chip = document.createElement('div');
-            chip.className = 'chip' + (file.type ? ` c-${file.type}` : '');
-            chip.textContent = file.ext;
-            chip.style.width = `${chipPx}px`;
-            chip.style.height = `${chipPx}px`;
-            chip.style.fontSize = `${Math.max(9, chipPx * 0.16)}px`;
-
-            const col = i % cols;
-            const row = Math.floor(i / cols);
-            const targetX = (col * cellW + cellW / 2) / 100 * box.width - chipPx / 2;
-            const targetY = (row * cellH + cellH / 2) / 100 * box.height - chipPx / 2;
-
-            if (prefersReducedMotion) {
-                chip.style.transform = `translate(${targetX}px, ${targetY}px)`;
-            } else {
-                const scatterX = Math.random() * (box.width - chipPx);
-                const scatterY = Math.random() * (box.height - chipPx);
-                const rot = (Math.random() * 30 - 15).toFixed(1);
-                chip.style.transform = `translate(${scatterX}px, ${scatterY}px) rotate(${rot}deg)`;
-                chip.dataset.targetX = targetX;
-                chip.dataset.targetY = targetY;
-            }
-
-            el.appendChild(chip);
-        });
-
-        if (prefersReducedMotion) return;
-
-        const settle = () => {
-            el.querySelectorAll('.chip').forEach((chip, i) => {
-                setTimeout(() => {
-                    chip.style.transform = `translate(${chip.dataset.targetX}px, ${chip.dataset.targetY}px) rotate(0deg)`;
-                }, i * 45);
-            });
-        };
-
-        const io = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(settle, 300);
-                    obs.disconnect();
-                }
-            });
-        }, { threshold: 0.4 });
-        io.observe(el);
-
-        if (statusEl) {
-            const folders = ['Scripts/', 'Downloads/', 'Media/', 'Documents/'];
-            let idx = 0;
-            setInterval(() => {
-                idx = (idx + 1) % folders.length;
-                statusEl.textContent = `sorting into ${folders[idx]}`;
-            }, 3200);
-        }
-    }
-
-    /* =====================================================
-       COPY EMAIL
-       ===================================================== */
-    function initCopyEmail() {
-        const btn = document.getElementById('copyEmailBtn');
-        const label = document.getElementById('copyLabel');
-        if (!btn || !label) return;
-
-        btn.addEventListener('click', async () => {
-            const email = btn.dataset.email;
-            try {
-                await navigator.clipboard.writeText(email);
-                label.textContent = 'Copied ✓';
-            } catch {
-                label.textContent = email;
-            }
-            setTimeout(() => { label.textContent = 'Copy email'; }, 2000);
-        });
-    }
-
-    /* =====================================================
-       SMOOTH SCROLL (Without updating URL Hash)
-       ===================================================== */
-    function initCleanScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    e.preventDefault(); // Stops the browser from adding the # to the URL
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Keeps the URL completely clean
-                    history.replaceState(null, null, window.location.pathname);
-                }
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hovering');
             });
         });
     }
 
-    /* =====================================================
-       INIT
-       ===================================================== */
-    document.addEventListener('DOMContentLoaded', () => {
-        initNav();
-        initMobileMenu();
-        initReveal();
-        initSortVisual();
-        initCopyEmail();
-        initCleanScroll(); 
+    // 2. Bento Card Glow Hover Effect (Mouse Tracking)
+    const glowCards = document.querySelectorAll('.hover-glow');
+    glowCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
-})();
+
+    // 3. Scroll Reveal Animation using IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Stop observing once revealed for performance
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, revealOptions);
+
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // 4. Navbar Background on Scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // 5. Smooth Scroll for Anchor Links (Backup if CSS scroll-behavior fails)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 6. Relative Time Formatting
+    const timeElements = document.querySelectorAll('.relative-time');
+    timeElements.forEach(el => {
+        const targetDateStr = el.getAttribute('data-date');
+        if (!targetDateStr) return;
+        
+        const targetDate = new Date(targetDateStr);
+        const now = new Date();
+        
+        let monthsDiff = (now.getFullYear() - targetDate.getFullYear()) * 12;
+        monthsDiff -= targetDate.getMonth();
+        monthsDiff += now.getMonth();
+        
+        if (now.getDate() < targetDate.getDate()) {
+            monthsDiff--;
+        }
+        
+        if (monthsDiff < 0) {
+            el.textContent = 'Coming Soon';
+        } else if (monthsDiff === 0) {
+            const daysDiff = Math.floor((now - targetDate) / (1000 * 60 * 60 * 24));
+            if (daysDiff === 0) el.textContent = 'Today';
+            else if (daysDiff === 1) el.textContent = 'Yesterday';
+            else el.textContent = `${daysDiff} Days Ago`;
+        } else if (monthsDiff < 12) {
+            el.textContent = `${monthsDiff} Month${monthsDiff > 1 ? 's' : ''} Ago`;
+        } else {
+            const yearsDiff = Math.floor(monthsDiff / 12);
+            el.textContent = `${yearsDiff} Year${yearsDiff > 1 ? 's' : ''} Ago`;
+        }
+    });
+
+    // 7. Terminal Scramble Scroll Animation
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const heroSection = document.querySelector('.alt-hero');
+        const scrambleElements = document.querySelectorAll('.hero-title-casual, .hero-casual-sub');
+        const chars = '!<>-_\\\\/[]{}—=+*^?#';
+        
+        // Store original text
+        const originalTexts = Array.from(scrambleElements).map(el => el.textContent.trim());
+
+        if (heroSection && scrambleElements.length > 0) {
+            ScrollTrigger.create({
+                trigger: heroSection,
+                start: "top 10%",
+                end: "bottom 30%",
+                scrub: true,
+                onUpdate: (self) => {
+                    const progress = self.progress; 
+                    
+                    // Don't scramble for the first 20% of scroll
+                    let scrambleProgress = 0;
+                    if (progress > 0.2) {
+                        scrambleProgress = (progress - 0.2) / 0.8;
+                    }
+                    
+                    scrambleElements.forEach((el, index) => {
+                        const original = originalTexts[index];
+                        let result = '';
+                        
+                        // Only calculate random characters if we are actually scrambling
+                        if (scrambleProgress === 0) {
+                            el.textContent = original;
+                            el.style.opacity = 1;
+                            return;
+                        }
+                        
+                        for (let i = 0; i < original.length; i++) {
+                            if (original[i] === ' ') {
+                                result += ' ';
+                                continue;
+                            }
+                            
+                            // Map scramble threshold left-to-right (0 to 0.8)
+                            const charThreshold = (i / original.length) * 0.8;
+                            
+                            if (scrambleProgress <= charThreshold) {
+                                result += original[i];
+                            } else {
+                                result += chars[Math.floor(Math.random() * chars.length)];
+                            }
+                        }
+                        
+                        el.textContent = result;
+                        el.style.opacity = 1 - Math.pow(progress, 3);
+                    });
+                    
+                    const otherElements = document.querySelectorAll('.status-badge, .hero-actions-alt');
+                    otherElements.forEach(el => {
+                        el.style.opacity = Math.max(0, 1 - (progress * 2.5));
+                    });
+                }
+            });
+        }
+    }
+});
