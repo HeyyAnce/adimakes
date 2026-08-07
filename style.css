@@ -1106,3 +1106,9 @@ ul {
 .error-actions {
     margin-top: 1rem;
 }
+
+/* Feature cards — override bento-grid to 3 equal columns so cards sit centred */
+.addysave-features {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
