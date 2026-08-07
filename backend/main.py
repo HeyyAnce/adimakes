@@ -12,6 +12,7 @@ import traceback
 import base64
 import tempfile
 import shutil
+import urllib.parse
 from pathlib import Path
 
 # ── App & rate limiter ──────────────────────────────────────────────────────
@@ -258,7 +259,7 @@ async def download_media(request: Request, url: str, format_id: str):
         return StreamingResponse(
             gen(),
             media_type="application/octet-stream",
-            headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+            headers={"Content-Disposition": f"attachment; filename*=utf-8''{urllib.parse.quote(filename)}"},
         )
 
     except HTTPException:
