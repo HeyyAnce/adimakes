@@ -1,0 +1,10 @@
+# Python cache
+backend/__pycache__/
+backend/*.pyc
+
+# Instagram/Facebook session cookies — never commit these
+backend/cookies.txt
+
+# OS / editor noise
+.DS_Store
+Thumbs.db

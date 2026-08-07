@@ -773,3 +773,336 @@ ul {
 #boot-screen.revealed {
     opacity: 0;
 }
+
+/* ==========================================================================
+   AddySave Downloader Component Styles
+   ========================================================================== */
+
+/* Hero Overrides for AddySave */
+.addysave-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding-top: 8rem; /* Adjusted for better centering above fold */
+}
+
+.addysave-title {
+    font-size: clamp(4rem, 10vw, 8rem);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.addysave-subtitle {
+    margin-bottom: 3rem;
+}
+
+/* URL Input */
+.url-input-container {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+#analyze-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    transition: var(--transition-fast);
+}
+
+#analyze-form:focus-within {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.premium-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding: 0 1rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    outline: none;
+}
+
+.premium-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Supported Platforms */
+.supported-platforms {
+    margin-top: 2rem;
+}
+
+.platforms-list {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.platform-badge {
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.platform-badge:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+}
+
+/* Hidden Utility */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Dynamic State Container */
+#dynamic-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 900px;
+}
+
+/* Loading State */
+.addysave-loading-state {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+    animation: shimmer 2.5s infinite linear;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.03) 4%, rgba(255, 255, 255, 0.08) 25%, rgba(255, 255, 255, 0.03) 36%);
+    background-size: 1000px 100%;
+}
+
+.skeleton-thumbnail {
+    width: 100%;
+    height: 350px;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skeleton-line {
+    height: 1.5rem;
+    border-radius: 4px;
+}
+
+.title-line { width: 70%; }
+.short-line { width: 40%; height: 1rem; }
+
+.skeleton-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.skeleton-box {
+    height: 4rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+}
+
+.loading-message-container {
+    margin-top: 1rem;
+}
+
+.fade-text {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Result Card */
+.addysave-result-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.result-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .result-layout {
+        grid-template-columns: 350px 1fr;
+    }
+}
+
+.result-media {
+    position: relative;
+    border-right: 1px solid var(--border-color);
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+.result-thumbnail {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.result-meta {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.platform-tag, .duration-tag {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+}
+
+.platform-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-info {
+    padding: 2.5rem;
+}
+
+.result-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.result-channel {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.download-options {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.option-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-hover);
+}
+
+.option-details {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.format {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.resolution {
+    color: var(--text-secondary);
+}
+
+.bitrate {
+    font-size: 0.85rem;
+}
+
+.option-action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.size {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+/* Error Card */
+.addysave-error-card {
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.error-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.error-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.error-title {
+    font-size: 1.5rem;
+    color: #fca5a5;
+}
+
+.error-actions {
+    margin-top: 1rem;
+}
