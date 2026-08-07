@@ -10,6 +10,8 @@ import yt_dlp
 import httpx
 import traceback
 import base64
+import tempfile
+import shutil
 from pathlib import Path
 
 # ── App & rate limiter ──────────────────────────────────────────────────────
@@ -36,7 +38,12 @@ def get_cookies_path() -> str | None:
     ]
     for p in paths:
         if p.exists():
-            return str(p)
+            # yt-dlp tries to update the cookies file. /etc/secrets/ is read-only on Render.
+            # We copy it to a temporary writable location to prevent crashes.
+            temp_dir = Path(tempfile.gettempdir())
+            writable_cookie = temp_dir / "yt_dlp_cookies.txt"
+            shutil.copy2(p, writable_cookie)
+            return str(writable_cookie)
     return None
 
 # Sent with every outbound request so CDNs treat us like a real browser
