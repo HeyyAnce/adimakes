@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startLoadingState();
 
-        fetch('/api/analyze', {
+        fetch('https://addysave-backend.onrender.com/api/analyze', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url })
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function downloadLink(originalUrl, formatId) {
-        return `/api/download?url=${encodeURIComponent(originalUrl)}&format_id=${formatId}`;
+        return `https://addysave-backend.onrender.com/api/download?url=${encodeURIComponent(originalUrl)}&format_id=${formatId}`;
     }
 
     // ── Result card ──────────────────────────────────────────────────────────
