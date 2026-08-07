@@ -26,7 +26,18 @@ app.add_middleware(
 
 # ── Config ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
-COOKIES_FILE = BASE_DIR / "backend" / "cookies.txt"
+
+def get_cookies_path() -> str | None:
+    # Check Render's secure mount path first, then local paths
+    paths = [
+        Path("/etc/secrets/cookies.txt"),
+        BASE_DIR / "backend" / "cookies.txt",
+        BASE_DIR / "cookies.txt"
+    ]
+    for p in paths:
+        if p.exists():
+            return str(p)
+    return None
 
 # Sent with every outbound request so CDNs treat us like a real browser
 BROWSER_HEADERS = {
@@ -55,8 +66,9 @@ def format_bytes(b):
 
 def base_ydl_opts() -> dict:
     opts = {"quiet": True, "no_warnings": True, "skip_download": True}
-    if COOKIES_FILE.exists():
-        opts["cookiefile"] = str(COOKIES_FILE)
+    cookie_path = get_cookies_path()
+    if cookie_path:
+        opts["cookiefile"] = cookie_path
     return opts
 
 def encode_url(url: str) -> str:
