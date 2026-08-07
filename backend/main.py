@@ -149,13 +149,22 @@ def extract_formats(info: dict) -> dict:
 
     video_formats.sort(key=lambda x: x.get("filesize") or 0, reverse=True)
     audio_formats.sort(key=lambda x: x.get("abr") or 0, reverse=True)
-    video_formats = video_formats[:3]
-    audio_formats = audio_formats[:2]
+    
+    platform = info.get("extractor_key", "").lower()
+    if platform in ("instagram", "facebook"):
+        video_formats = video_formats[:1]
+        audio_formats = audio_formats[:1]
+    else:
+        video_formats = video_formats[:3]
+        audio_formats = audio_formats[:2]
 
     quality_labels = ["High Quality", "Medium Quality", "Low Quality"]
     for i, vf in enumerate(video_formats):
         if vf["resolution"] == "Unknown":
-            vf["resolution"] = quality_labels[i % 3]
+            if platform in ("instagram", "facebook"):
+                vf["resolution"] = "High Quality"
+            else:
+                vf["resolution"] = quality_labels[i % 3]
 
     return {"video": video_formats, "audio": audio_formats}
 
