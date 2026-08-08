@@ -24,8 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const url = input.value.trim();
         if (!url) return;
+        analyzeUrl(url, false);
+    });
 
-        startLoadingState();
+    function analyzeUrl(url, isRetry) {
+        startLoadingState(isRetry);
 
         fetch('https://addysave-backend.onrender.com/api/analyze', {
             method: 'POST',
@@ -38,6 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => renderResultCard(data, url))
         .catch(error => {
+            // Network error = server is likely cold-starting (Render free tier).
+            // Retry once automatically with a friendly message.
+            const isNetworkError = !error?.detail;
+            if (isNetworkError && !isRetry) {
+                renderWarmingUpCard(() => analyzeUrl(url, true));
+                return;
+            }
+
             const detail = error?.detail || "";
             let title       = "Something went wrong";
             let description = "An unexpected error occurred. Please try again.";
@@ -64,10 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderErrorCard(title, description);
         });
-    });
+    }
 
-    // ── Loading state ────────────────────────────────────────────────────────
-    function startLoadingState() {
+    // ── Loading state ───────────────────────────────────────────────────────────────────
+    function startLoadingState(isRetry = false) {
+        const firstMsg = isRetry ? "Retrying..." : loadingMessages[0];
         dynamicContainer.classList.remove('hidden');
         dynamicContainer.innerHTML = `
             <div class="addysave-loading-state bento-card hover-glow" data-glow>
@@ -81,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="loading-message-container text-center">
-                    <span id="loading-message" class="eyebrow fade-text">${loadingMessages[0]}</span>
+                    <span id="loading-message" class="eyebrow fade-text">${firstMsg}</span>
                 </div>
             </div>
         `;
@@ -165,7 +177,40 @@ document.addEventListener('DOMContentLoaded', () => {
         initGlow(dynamicContainer.querySelector('.hover-glow'));
     }
 
-    // ── Error card ───────────────────────────────────────────────────────────
+    // ── Warming-up card (Render cold start) ───────────────────────────────────
+    function renderWarmingUpCard(retryCallback) {
+        clearInterval(messageInterval);
+        let seconds = 15;
+        dynamicContainer.innerHTML = `
+            <div class="addysave-error-card bento-card reveal active hover-glow" data-glow>
+                <div class="error-layout">
+                    <div class="error-icon" style="background:rgba(99,102,241,0.1);color:#818cf8">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                    </div>
+                    <div class="error-content">
+                        <h3 class="error-title" style="color:#818cf8">Server Warming Up</h3>
+                        <p class="text-muted">The server was sleeping. Retrying automatically in <strong id="countdown">${seconds}s</strong>...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        initGlow(dynamicContainer.querySelector('.hover-glow'));
+
+        const countdownEl = document.getElementById('countdown');
+        const interval = setInterval(() => {
+            seconds--;
+            if (countdownEl) countdownEl.textContent = `${seconds}s`;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                retryCallback();
+            }
+        }, 1000);
+    }
+
+    // ── Error card ───────────────────────────────────────────────────────────────────
     function renderErrorCard(title = "Content Unavailable", description = "This media might be private, deleted, or unsupported.") {
         clearInterval(messageInterval);
         dynamicContainer.innerHTML = `

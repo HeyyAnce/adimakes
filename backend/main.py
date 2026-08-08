@@ -73,7 +73,13 @@ def format_bytes(b):
     return f"{b:.1f} GB"
 
 def base_ydl_opts() -> dict:
-    opts = {"quiet": True, "no_warnings": True, "skip_download": True}
+    opts = {
+        "quiet": True,
+        "no_warnings": True,
+        "skip_download": True,
+        # Impersonate Android YouTube app — bypasses data-centre IP blocks on YouTube
+        "extractor_args": {"youtube": {"player_client": ["android"]}},
+    }
     cookie_path = get_cookies_path()
     if cookie_path:
         opts["cookiefile"] = cookie_path
@@ -185,6 +191,11 @@ async def stream_url(source_url: str, referer: str = ""):
     return generator
 
 # ── Routes ───────────────────────────────────────────────────────────────────
+@app.get("/health")
+async def health_check():
+    """Keep-alive endpoint. Ping this every 10 min to prevent Render cold starts."""
+    return {"status": "ok"}
+
 @app.post("/api/analyze")
 @limiter.limit("10/minute")
 async def analyze_url(request: Request, req: AnalyzeRequest):
