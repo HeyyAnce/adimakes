@@ -77,13 +77,39 @@ def base_ydl_opts() -> dict:
         "quiet": True,
         "no_warnings": True,
         "skip_download": True,
-        # Impersonate Android YouTube app — bypasses data-centre IP blocks on YouTube
-        "extractor_args": {"youtube": {"player_client": ["android"]}},
     }
     cookie_path = get_cookies_path()
     if cookie_path:
         opts["cookiefile"] = cookie_path
     return opts
+
+# YouTube player clients to try in sequence (data-centre IPs get blocked on some)
+YT_CLIENTS = ["android", "ios", "tv_embed", "web_creator", "mweb"]
+
+def extract_info_with_fallback(url: str) -> dict:
+    """For YouTube URLs, try multiple player clients until one works."""
+    is_youtube = any(x in url for x in ("youtube.com", "youtu.be"))
+
+    if not is_youtube:
+        with yt_dlp.YoutubeDL(base_ydl_opts()) as ydl:
+            return ydl.extract_info(url, download=False)
+
+    last_err = None
+    for client in YT_CLIENTS:
+        try:
+            opts = {
+                **base_ydl_opts(),
+                "extractor_args": {"youtube": {"player_client": [client]}},
+            }
+            with yt_dlp.YoutubeDL(opts) as ydl:
+                return ydl.extract_info(url, download=False)
+        except yt_dlp.utils.DownloadError as e:
+            last_err = e
+            msg = str(e).lower()
+            # Only retry on auth errors; hard-fail everything else immediately
+            if "login" not in msg and "authentication" not in msg and "sign in" not in msg:
+                raise
+    raise last_err
 
 def encode_url(url: str) -> str:
     return "native:" + base64.urlsafe_b64encode(url.encode()).decode()
@@ -201,8 +227,7 @@ async def health_check():
 async def analyze_url(request: Request, req: AnalyzeRequest):
     url = req.url.strip()
     try:
-        with yt_dlp.YoutubeDL(base_ydl_opts()) as ydl:
-            info = ydl.extract_info(url, download=False)
+        info = extract_info_with_fallback(url)
 
         return {
             "title":     info.get("title") or "Untitled",
