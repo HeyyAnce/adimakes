@@ -72,33 +72,32 @@ def format_bytes(b):
         b /= 1024
     return f"{b:.1f} GB"
 
-def base_ydl_opts() -> dict:
-    opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "skip_download": True,
-    }
-    cookie_path = get_cookies_path()
-    if cookie_path:
-        opts["cookiefile"] = cookie_path
+def base_ydl_opts(use_cookies: bool = True) -> dict:
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True}
+    if use_cookies:
+        cookie_path = get_cookies_path()
+        if cookie_path:
+            opts["cookiefile"] = cookie_path
     return opts
 
 # YouTube player clients to try in sequence (data-centre IPs get blocked on some)
 YT_CLIENTS = ["android", "ios", "tv_embed", "web_creator", "mweb"]
 
 def extract_info_with_fallback(url: str) -> dict:
-    """For YouTube URLs, try multiple player clients until one works."""
+    """For YouTube URLs, try multiple player clients (no cookies — they conflict with android API).
+       For all other platforms, use cookies normally."""
     is_youtube = any(x in url for x in ("youtube.com", "youtu.be"))
 
     if not is_youtube:
-        with yt_dlp.YoutubeDL(base_ydl_opts()) as ydl:
+        with yt_dlp.YoutubeDL(base_ydl_opts(use_cookies=True)) as ydl:
             return ydl.extract_info(url, download=False)
 
     last_err = None
     for client in YT_CLIENTS:
         try:
             opts = {
-                **base_ydl_opts(),
+                # No cookies for YouTube — web cookies break the android/ios API clients
+                **base_ydl_opts(use_cookies=False),
                 "extractor_args": {"youtube": {"player_client": [client]}},
             }
             with yt_dlp.YoutubeDL(opts) as ydl:
