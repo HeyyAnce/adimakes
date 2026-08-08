@@ -269,8 +269,18 @@ async def download_media(request: Request, url: str, format_id: str):
                 headers={"Content-Disposition": 'attachment; filename="video.mp4"'},
             )
 
-        # yt-dlp resolved URL (YouTube, Facebook, Instagram, etc.)
-        with yt_dlp.YoutubeDL({**base_ydl_opts(), "format": format_id}) as ydl:
+        # yt-dlp resolved URL — must use same client as analyze so format_id stays valid
+        is_youtube = any(x in url for x in ("youtube.com", "youtu.be"))
+        if is_youtube:
+            dl_opts = {
+                **base_ydl_opts(use_cookies=False),
+                "format": format_id,
+                "extractor_args": {"youtube": {"player_client": ["android"]}},
+            }
+        else:
+            dl_opts = {**base_ydl_opts(use_cookies=True), "format": format_id}
+
+        with yt_dlp.YoutubeDL(dl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
 
         direct = info.get("url")
