@@ -1,0 +1,501 @@
+/* ==========================================================================
+   Scam Shield Component Styles - adimakes.in/scam-shield
+   ========================================================================== */
+
+/* Hero Overrides for Scam Shield */
+.scamshield-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding-top: 7.5rem;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+.scamshield-title {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+}
+
+.scamshield-subtitle {
+    max-width: 680px;
+    margin: 0 auto 1.75rem;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.scamshield-quick-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+/* Embed Application Frame Section */
+.scamshield-embed-section {
+    padding: 1rem 0 5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.scamshield-embed-container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* Window Chrome & Bento Frame */
+.embed-window {
+    padding: 0;
+    overflow: hidden;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.05);
+    backdrop-filter: blur(20px);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.embed-window:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(59, 130, 246, 0.08);
+}
+
+/* Window Titlebar */
+.window-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    background: rgba(12, 12, 12, 0.85);
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+.window-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: 60px;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: opacity var(--transition-fast);
+}
+
+.dot-red {
+    background-color: #ef4444;
+    opacity: 0.8;
+}
+
+.dot-amber {
+    background-color: #f59e0b;
+    opacity: 0.8;
+}
+
+.dot-green {
+    background-color: #10b981;
+    opacity: 0.8;
+}
+
+.embed-window:hover .dot {
+    opacity: 1;
+}
+
+.window-url-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    max-width: 480px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.window-url-pill .lock-icon {
+    width: 12px;
+    height: 12px;
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.window-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    line-height: 1;
+    text-decoration: none;
+}
+
+.window-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+}
+
+.window-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Iframe Viewport */
+.iframe-viewport {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    min-height: 850px;
+    max-height: 1100px;
+    background: #0e1117; /* Matches Streamlit default dark canvas */
+    overflow: hidden;
+}
+
+#scam-shield-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+#scam-shield-iframe.loaded {
+    opacity: 1;
+}
+
+/* Loading State Overlay */
+.embed-loader-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #090a0f;
+    z-index: 10;
+    padding: 2rem;
+    text-align: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.embed-loader-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.shield-spinner {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(59, 130, 246, 0.15);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin-pulse 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.shield-icon {
+    width: 34px;
+    height: 34px;
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
+    animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes spin-pulse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+.loader-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.loader-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+.loader-delayed-tip {
+    margin-top: 1.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.loader-delayed-tip.visible {
+    display: block;
+}
+
+.loader-delayed-tip a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Fallback / Error State Container */
+.embed-fallback-card {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #090a0f;
+    z-index: 15;
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.embed-fallback-card.visible {
+    display: flex;
+    animation: fadeIn 0.4s ease;
+}
+
+.fallback-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.fallback-icon-wrap svg {
+    width: 32px;
+    height: 32px;
+}
+
+.fallback-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.fallback-desc {
+    max-width: 520px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+}
+
+.fallback-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Fullscreen Mode for Embed */
+.embed-window.is-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    z-index: 10000;
+    border: none;
+}
+
+.embed-window.is-fullscreen .iframe-viewport {
+    height: calc(100vh - 48px);
+    min-height: 0;
+    max-height: none;
+}
+
+/* Features / Info Section */
+.scamshield-info-section {
+    padding: 4rem 0 6rem;
+}
+
+.scamshield-features {
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 3rem;
+}
+
+.feature-icon-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.feature-icon-badge svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+}
+
+.scamshield-features .feature-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.scamshield-features .feature-desc {
+    font-size: 0.925rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Standalone Banner Callout */
+.scamshield-direct-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 2rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-top: 2rem;
+}
+
+.callout-text {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.callout-text strong {
+    color: var(--text-primary);
+}
+
+.callout-icon {
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+    .scamshield-features {
+        grid-template-columns: 1fr;
+    }
+
+    .scamshield-direct-callout {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .scamshield-hero {
+        padding-top: 6rem;
+    }
+
+    .window-titlebar {
+        padding: 0.75rem 1rem;
+    }
+
+    .window-dots {
+        display: none;
+    }
+
+    .window-url-pill {
+        max-width: 200px;
+        font-size: 0.75rem;
+    }
+
+    .window-btn span {
+        display: none;
+    }
+
+    .window-btn {
+        padding: 0.4rem;
+    }
+
+    .iframe-viewport {
+        height: 75vh;
+        min-height: 600px;
+    }
+
+    .fallback-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .fallback-actions .btn-primary,
+    .fallback-actions .btn-outline {
+        width: 100%;
+    }
+}
